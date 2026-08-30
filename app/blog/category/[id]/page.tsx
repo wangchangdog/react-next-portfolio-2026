@@ -38,7 +38,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     notFound();
   }
 
-  const posts = await getPostsByCategory(id);
+  const posts = await getPostsByCategory(category.id);
 
   return (
     <Container className={styles.page}>
