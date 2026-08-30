@@ -2,13 +2,31 @@
 
 このリポジトリは、専門学校1年生が授業で段階的に実装するための学生向け雛形です。完成済みの高機能なポートフォリオへ一括変更せず、依頼された授業段階に必要な範囲だけを変更してください。
 
+## ブランチ方針
+
+- `master`は第5回開始時の学生用雛形として維持します。
+- `checkpoint/week-07-start`は第7回開始時の復帰用です。
+- `checkpoint/week-08-start`はmicroCMSの一覧接続まで完了した復帰用です。
+- `checkpoint/week-09-start`は記事詳細とNot Foundまで完了した復帰用です。
+- `reference/week-09-complete`はカテゴリーと再検証まで含む教員確認用です。
+- チェックポイントや完成例のコードを`master`へ先回りして統合しません。
+
 ## 技術基準
 
 - Node.js 24系、Next.js 16.3.3、React 19.2.8、TypeScript 5.9.3を基準とします。
 - App Routerを使用します。
-- Next.js 16の `params` と `searchParams` は、必要に応じてPromiseとして扱います。
+- Next.js 16の`params`と`searchParams`は、必要に応じてPromiseとして扱います。
 - CSS Modulesを標準とし、追加のUIライブラリは明示的な依頼がある場合だけ導入します。
 - サーバーで完結する処理はServer Componentに置き、ブラウザの状態やイベントが必要な部分だけClient Componentにします。
+
+## データ取得の境界
+
+- microCMSクライアントは`lib/microcms.ts`へ置きます。
+- ページが呼び出す`getPosts()`や`getPostBySlug()`などは`lib/posts.ts`へ置きます。
+- APIの取得処理を`page.tsx`へ直接書きません。
+- 秘密情報がない状態でもCIを実行できるように、チェックポイントではサンプルデータへのフォールバックを残します。
+- 第9回の標準コースでは、記事1件につきカテゴリー1件を参照します。
+- 教員確認用の第9回完成例では、公開データを最大60秒ごとに再検証します。
 
 ## 教材としての制約
 
@@ -28,4 +46,4 @@ npm run typecheck
 npm run build
 ```
 
-秘密情報をコード、README、テストデータへ記載しません。環境変数の名称だけを `.env.example` に記載します。
+秘密情報をコード、README、テストデータへ記載しません。環境変数の名称だけを`.env.example`に記載します。
