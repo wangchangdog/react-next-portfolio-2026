@@ -47,10 +47,18 @@ export async function getPosts(): Promise<Post[]> {
 export async function getPostBySlug(slug: string): Promise<Post | undefined> {
   const client = getMicroCMSClient();
 
-  if (client) {
-    // 第8回で、microCMSから1件取得する処理へ置き換えます。
-    return undefined;
+  if (!client) {
+    return samplePosts.find((post) => post.slug === slug);
   }
 
-  return samplePosts.find((post) => post.slug === slug);
+  try {
+    const blog = await client.getListDetail<MicroCMSBlog>({
+      endpoint: "blogs",
+      contentId: slug,
+    });
+
+    return toPost(blog);
+  } catch {
+    return undefined;
+  }
 }
