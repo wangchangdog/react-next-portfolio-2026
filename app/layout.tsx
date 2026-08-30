@@ -1,0 +1,38 @@
+import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
+import "./globals.css";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Portfolio 2026",
+    template: "%s | Portfolio 2026",
+  },
+  description:
+    "Web基礎の授業で制作する、Next.jsを使ったポートフォリオサイトです。",
+};
+
+type RootLayoutProps = {
+  children: ReactNode;
+};
+
+export default function RootLayout({ children }: RootLayoutProps) {
+  return (
+    <html lang="ja">
+      <body>
+        <a className="skipLink" href="#main-content">
+          本文へ移動
+        </a>
+        <div className="siteFrame">
+          <SiteHeader />
+          <main id="main-content">{children}</main>
+          <SiteFooter />
+        </div>
+      </body>
+    </html>
+  );
+}
