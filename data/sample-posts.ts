@@ -13,6 +13,11 @@ export const samplePosts: Post[] = [
       "授業ごとの変更をGitHubへ記録し、どのようにサイトが成長したか分かる状態にします。",
     ],
     publishedAt: "2026-11-07T00:00:00.000Z",
+    thumbnail: {
+      url: "/images/sample-blog-01.svg",
+      width: 1200,
+      height: 675,
+    },
   },
   {
     id: "react-learning",
@@ -26,6 +31,11 @@ export const samplePosts: Post[] = [
       "Next.jsの制作でも、Reactで学んだコンポーネントの考え方を引き続き使用します。",
     ],
     publishedAt: "2026-10-31T00:00:00.000Z",
+    thumbnail: {
+      url: "/images/sample-blog-02.svg",
+      width: 1200,
+      height: 675,
+    },
   },
   {
     id: "future-plan",
@@ -39,5 +49,10 @@ export const samplePosts: Post[] = [
       "ブログには、授業で発生した問題と、その問題をどのように解決したかを記録します。",
     ],
     publishedAt: "2026-10-24T00:00:00.000Z",
+    thumbnail: {
+      url: "/images/sample-blog-03.svg",
+      width: 1200,
+      height: 675,
+    },
   },
 ];

@@ -1,11 +1,10 @@
 import type { Thumbnail } from "@/types/media";
 
-export type Post = {
+export type Work = {
   id: string;
   slug: string;
   title: string;
   description: string;
   content: string[];
-  publishedAt: string;
   thumbnail?: Thumbnail;
 };
