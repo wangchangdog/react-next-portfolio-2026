@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { profile } from "@/data/profile";
 import styles from "./SiteHeader.module.css";
 
 const navigation = [
-  { href: "/", label: "TOP" },
+  { href: "/", label: "ホーム" },
   { href: "/profile", label: "プロフィール" },
   { href: "/blog", label: "ブログ" },
 ] as const;
@@ -13,7 +14,7 @@ export function SiteHeader() {
     <header className={styles.header}>
       <Container className={styles.inner}>
         <Link className={styles.brand} href="/">
-          Portfolio 2026
+          {profile.name}
         </Link>
         <nav aria-label="メインナビゲーション">
           <ul className={styles.navigation}>

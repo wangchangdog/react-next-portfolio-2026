@@ -3,45 +3,22 @@
 }
 
 .header {
-  max-width: 48rem;
-}
-
-.eyebrow {
-  margin: 0;
-  color: var(--color-accent-strong);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
+  max-width: 42rem;
 }
 
 .header h1 {
-  margin: 0.5rem 0 0;
-  color: var(--color-text-strong);
-  font-size: clamp(2.3rem, 6vw, 4rem);
+  margin: 0;
+  font-size: clamp(2.25rem, 6vw, 3.25rem);
   letter-spacing: -0.035em;
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
-.header > p:last-child {
-  margin-top: 1.25rem;
-  color: var(--color-text-muted);
-  font-size: 1.05rem;
+.header p {
+  margin: 1.25rem 0 0;
+  color: var(--color-muted);
+  font-size: 1.025rem;
 }
 
-.grid {
-  display: grid;
-  gap: 1rem;
-  margin-top: 3rem;
-}
-
-@media (min-width: 44rem) {
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 68rem) {
-  .grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+.list {
+  margin-top: clamp(3rem, 8vw, 5rem);
 }

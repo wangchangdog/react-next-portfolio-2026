@@ -9,11 +9,10 @@ export const samplePosts: Post[] = [
       "Next.jsの雛形を起動し、これから制作するサイトの目的を整理しました。",
     content: [
       "このサイトは、授業で学んだ内容と制作物を第三者へ伝えるために作ります。",
-      "最初の段階ではサンプルデータを表示しています。第7回の授業で、microCMSから取得した記事へ置き換えます。",
+      "最初の段階ではサンプルデータを表示しています。第9回の授業で、microCMSから取得した記事へ置き換えます。",
       "授業ごとの変更をGitHubへ記録し、どのようにサイトが成長したか分かる状態にします。",
     ],
     publishedAt: "2026-11-07T00:00:00.000Z",
-    categories: ["授業", "Next.js"],
   },
   {
     id: "react-learning",
@@ -27,7 +26,6 @@ export const samplePosts: Post[] = [
       "Next.jsの制作でも、Reactで学んだコンポーネントの考え方を引き続き使用します。",
     ],
     publishedAt: "2026-10-31T00:00:00.000Z",
-    categories: ["授業", "React"],
   },
   {
     id: "future-plan",
@@ -41,6 +39,5 @@ export const samplePosts: Post[] = [
       "ブログには、授業で発生した問題と、その問題をどのように解決したかを記録します。",
     ],
     publishedAt: "2026-10-24T00:00:00.000Z",
-    categories: ["計画"],
   },
 ];

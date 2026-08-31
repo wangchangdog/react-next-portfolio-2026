@@ -12,13 +12,12 @@ export default function ProfilePage() {
   return (
     <Container className={styles.page}>
       <header className={styles.header}>
-        <p className={styles.eyebrow}>PROFILE</p>
         <h1>プロフィール</h1>
         <p>{profile.introduction}</p>
       </header>
 
-      <div className={styles.layout}>
-        <section className={styles.card}>
+      <div className={styles.sections}>
+        <section className={styles.section}>
           <h2>基本情報</h2>
           <dl className={styles.definitionList}>
             <div>
@@ -36,25 +35,25 @@ export default function ProfilePage() {
           </dl>
         </section>
 
-        <section className={styles.card}>
+        <section className={styles.section}>
           <h2>学習中の技術</h2>
-          <ul className={styles.skillList}>
+          <ul className={styles.simpleList}>
             {profile.skills.map((skill) => (
               <li key={skill}>{skill}</li>
             ))}
           </ul>
         </section>
 
-        <section className={styles.cardWide}>
+        <section className={styles.section}>
           <h2>今後の目標</h2>
-          <ul className={styles.goalList}>
+          <ul className={styles.simpleList}>
             {profile.learningGoals.map((goal) => (
               <li key={goal}>{goal}</li>
             ))}
           </ul>
         </section>
 
-        <section className={styles.cardWide}>
+        <section className={styles.section}>
           <h2>リンク</h2>
           <ul className={styles.linkList}>
             {profile.links.map((link) => (
