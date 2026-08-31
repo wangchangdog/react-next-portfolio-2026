@@ -1,26 +1,43 @@
-# checkpoint/week-08-start
+# reference/week-09-complete
 
-このブランチは、第8回授業を開始するための途中復帰用チェックポイントです。
+このブランチは、第9回授業の教員確認用完成例です。通常の学生用開始地点ではありません。
 
 ## 完了していること
 
-- `.env.local`の値がある場合、microCMSの`blogs` APIから記事一覧を取得する
-- 環境変数がない場合、サンプル記事を表示してCIとローカル起動を維持する
-- microCMSのリッチエディタ本文を表示するための`PostBody`コンポーネント
-- Next.js 16向けの非同期`params`を使う詳細ページの雛形
+- microCMSの`blogs` APIから一覧と詳細を取得する
+- microCMSの`categories` APIからカテゴリーを取得する
+- `blogs.category`のコンテンツ参照を画面用の型へ変換する
+- 記事カードと記事詳細からカテゴリー別一覧へ移動する
+- 存在しないカテゴリーをNot Foundとして扱う
+- 公開記事を最大60秒ごとに再検証する
+- 環境変数がない場合はサンプル記事とサンプルカテゴリーへフォールバックする
 
-## 第8回で学生が行うこと
+## microCMSの構成
 
-- `lib/posts.ts`の`getPostBySlug()`を、microCMSから1件取得する処理へ置き換える
-- 一覧から詳細へ移動し、本文を表示する
-- 存在しない記事でNot Foundを表示する
-- Vercelへ環境変数を設定して公開する
+### blogs
 
-## 必要なmicroCMS API
-
-- エンドポイント：`blogs`
 - `title`：テキストフィールド
 - `description`：テキストエリア
 - `content`：リッチエディタ
+- `category`：`categories`へのコンテンツ参照、1件
 
-カテゴリーは第9回で追加します。
+### categories
+
+- `name`：テキストフィールド
+
+## 確認するURL
+
+- `/blog`
+- `/blog/記事のコンテンツID`
+- `/blog/category/カテゴリーのコンテンツID`
+- 存在しない記事とカテゴリーのURL
+
+## 学生へ提示するときの注意
+
+完成コードを一括でコピーさせず、次の順に差分を確認します。
+
+1. `types/post.ts`のカテゴリー型
+2. `lib/posts.ts`の取得と変換
+3. `PostCard`のカテゴリーリンク
+4. `app/blog/category/[id]/page.tsx`
+5. `customRequestInit.next.revalidate`

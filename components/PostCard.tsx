@@ -13,7 +13,12 @@ export function PostCard({ post }: PostCardProps) {
       <div className={styles.meta}>
         <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
         {post.category ? (
-          <span className={styles.category}>{post.category.name}</span>
+          <Link
+            className={styles.categoryLink}
+            href={`/blog/category/${post.category.id}`}
+          >
+            {post.category.name}
+          </Link>
         ) : null}
       </div>
       <h2 className={styles.title}>
