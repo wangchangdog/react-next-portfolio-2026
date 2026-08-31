@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
@@ -50,6 +51,16 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </time>
           <h1>{post.title}</h1>
           <p className={styles.description}>{post.description}</p>
+          {post.thumbnail ? (
+            <Image
+              className={styles.thumbnail}
+              src={post.thumbnail.url}
+              alt={`${post.title}のサムネイル`}
+              width={post.thumbnail.width}
+              height={post.thumbnail.height}
+              sizes="(max-width: 48rem) calc(100vw - 2.5rem), 46rem"
+            />
+          ) : null}
         </header>
 
         <div className={styles.content}>
