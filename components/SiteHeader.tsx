@@ -6,6 +6,7 @@ import styles from "./SiteHeader.module.css";
 const navigation = [
   { href: "/", label: "ホーム" },
   { href: "/profile", label: "プロフィール" },
+  { href: "/works", label: "作品" },
   { href: "/blog", label: "ブログ" },
 ] as const;
 

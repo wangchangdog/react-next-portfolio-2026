@@ -1,6 +1,6 @@
 .item {
   display: grid;
-  gap: 0.5rem;
+  gap: 1rem;
   border-top: 1px solid var(--color-border);
   padding-block: 1.5rem;
 }
@@ -9,7 +9,26 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+.thumbnailLink {
+  display: block;
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--color-border);
+  background: #f5f5f5;
+  object-fit: cover;
+}
+
+.body {
+  min-width: 0;
+}
+
 .date {
+  display: block;
+  margin-bottom: 0.35rem;
   color: var(--color-muted);
   font-size: 0.8125rem;
 }
@@ -33,9 +52,10 @@
   color: var(--color-muted);
 }
 
-@media (min-width: 40rem) {
-  .item {
-    grid-template-columns: 8rem minmax(0, 1fr);
+@media (min-width: 48rem) {
+  .withThumbnail {
+    grid-template-columns: minmax(10rem, 15rem) minmax(0, 1fr);
+    align-items: start;
     gap: 2rem;
   }
 }
