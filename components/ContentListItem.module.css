@@ -26,11 +26,26 @@
   min-width: 0;
 }
 
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 1rem;
+  margin-bottom: 0.35rem;
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+}
+
 .date {
   display: block;
   margin-bottom: 0.35rem;
   color: var(--color-muted);
   font-size: 0.8125rem;
+}
+
+.categoryLink {
+  color: inherit;
+  font-size: 0.75rem;
 }
 
 .title {

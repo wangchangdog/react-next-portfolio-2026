@@ -18,6 +18,10 @@ export const samplePosts: Post[] = [
       width: 1200,
       height: 675,
     },
+    category: {
+      id: "lesson",
+      name: "授業",
+    },
   },
   {
     id: "react-learning",
@@ -35,6 +39,10 @@ export const samplePosts: Post[] = [
       url: "/images/sample-blog-02.svg",
       width: 1200,
       height: 675,
+    },
+    category: {
+      id: "react",
+      name: "React",
     },
   },
   {

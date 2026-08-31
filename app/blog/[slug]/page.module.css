@@ -17,11 +17,17 @@
   font-size: 0.875rem;
 }
 
-.header time {
-  display: block;
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
   margin-top: 2.5rem;
   color: var(--color-muted);
   font-size: 0.8125rem;
+}
+
+.categoryLink {
+  color: inherit;
 }
 
 .header h1 {
