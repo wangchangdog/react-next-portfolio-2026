@@ -11,6 +11,16 @@
 - `reference/week-09-complete`はカテゴリーと再検証まで含む教員確認用です。
 - チェックポイントや完成例のコードを`master`へ先回りして統合しません。
 
+## Pull Request方針
+
+- 変更を行うためにブランチを作成した場合は、コミットとプッシュの後に必ずPull Requestを作成します。
+- `master`へ統合する通常の変更は、作業ブランチから`master`へPull Requestを作成します。
+- チェックポイントは、直前のチェックポイントをBase、次のチェックポイントをHeadとするDraft Pull Requestを作成し、差分を小さく保ちます。
+- 教員確認用の`reference`ブランチは、対応する開始チェックポイントをBaseとするDraft Pull Requestを作成します。
+- レビュー専用のDraft Pull Requestはマージせず、授業段階の差分確認に使用します。
+- Pull Request本文には、目的、BaseとHead、主な変更、意図的に未完成の部分、品質確認結果を記載します。
+- 差分がないブランチではPull Requestを作成できません。ブランチを作る前に、そのブランチで管理する変更があることを確認します。
+
 ## 技術基準
 
 - Node.js 24系、Next.js 16.3.3、React 19.2.8、TypeScript 5.9.3を基準とします。
