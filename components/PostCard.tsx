@@ -5,26 +5,26 @@ import styles from "./PostCard.module.css";
 
 type PostCardProps = {
   post: Post;
+  headingLevel?: "h2" | "h3";
 };
 
-export function PostCard({ post }: PostCardProps) {
+export function PostCard({
+  post,
+  headingLevel = "h2",
+}: PostCardProps) {
+  const Heading = headingLevel;
+
   return (
-    <article className={styles.card}>
-      <div className={styles.meta}>
-        <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
-        <ul className={styles.categories} aria-label="カテゴリー">
-          {post.categories.map((category) => (
-            <li key={category}>{category}</li>
-          ))}
-        </ul>
+    <article className={styles.item}>
+      <time className={styles.date} dateTime={post.publishedAt}>
+        {formatDate(post.publishedAt)}
+      </time>
+      <div>
+        <Heading className={styles.title}>
+          <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+        </Heading>
+        <p className={styles.description}>{post.description}</p>
       </div>
-      <h2 className={styles.title}>
-        <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-      </h2>
-      <p className={styles.description}>{post.description}</p>
-      <Link className={styles.moreLink} href={`/blog/${post.slug}`}>
-        記事を読む
-      </Link>
     </article>
   );
 }

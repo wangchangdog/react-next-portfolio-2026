@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { profile } from "@/data/profile";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -9,8 +10,8 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Portfolio 2026",
-    template: "%s | Portfolio 2026",
+    default: profile.name,
+    template: `%s | ${profile.name}`,
   },
   description:
     "Web基礎の授業で制作する、Next.jsを使ったポートフォリオサイトです。",

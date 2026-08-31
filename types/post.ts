@@ -5,5 +5,4 @@ export type Post = {
   description: string;
   content: string[];
   publishedAt: string;
-  categories: string[];
 };

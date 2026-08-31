@@ -15,14 +15,13 @@ export default async function BlogPage() {
   return (
     <Container className={styles.page}>
       <header className={styles.header}>
-        <p className={styles.eyebrow}>BLOG</p>
         <h1>ブログ</h1>
         <p>
           授業で学んだ内容、制作中に発生した問題、試したことを記録します。
         </p>
       </header>
 
-      <div className={styles.grid}>
+      <div className={styles.list}>
         {posts.map((post) => (
           <PostCard key={post.id} post={post} />
         ))}

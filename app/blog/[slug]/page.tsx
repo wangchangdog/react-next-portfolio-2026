@@ -45,16 +45,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <Link className={styles.backLink} href="/blog">
             ブログ一覧へ戻る
           </Link>
-          <ul className={styles.categories} aria-label="カテゴリー">
-            {post.categories.map((category) => (
-              <li key={category}>{category}</li>
-            ))}
-          </ul>
+          <time dateTime={post.publishedAt}>
+            {formatDate(post.publishedAt)}
+          </time>
           <h1>{post.title}</h1>
           <p className={styles.description}>{post.description}</p>
-          <time dateTime={post.publishedAt}>
-            公開日: {formatDate(post.publishedAt)}
-          </time>
         </header>
 
         <div className={styles.content}>
