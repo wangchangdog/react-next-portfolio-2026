@@ -39,16 +39,3 @@
   background: #f5f5f5;
   object-fit: cover;
 }
-
-.content {
-  padding-top: 2rem;
-  font-size: 1.025rem;
-}
-
-.content p {
-  margin: 0;
-}
-
-.content p + p {
-  margin-top: 1.5rem;
-}
