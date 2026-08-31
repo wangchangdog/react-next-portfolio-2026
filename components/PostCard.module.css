@@ -19,19 +19,20 @@
   font-size: 0.8rem;
 }
 
-.categoryLink {
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.categories li {
   border-radius: 999px;
   background: var(--color-accent-soft);
   padding: 0.2rem 0.55rem;
   color: var(--color-accent-strong);
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.categoryLink:hover,
-.categoryLink:focus-visible {
-  background: var(--color-accent);
-  color: white;
 }
 
 .title {

@@ -6,17 +6,19 @@
 
 | ブランチ | 想定する利用場面 | 含まれる状態 |
 |---|---|---|
-| `checkpoint/week-07-start` | 第5回・第6回の作業をやり直す必要がある | サンプル記事、プロフィール、主要ページの静的な雛形 |
-| `checkpoint/week-08-start` | 第7回のmicroCMS一覧接続で止まった | `blogs` APIから一覧を取得できる。詳細取得は未完成 |
-| `checkpoint/week-09-start` | 第8回の記事詳細で止まった | 一覧、詳細、Not Foundまで動作する。カテゴリーは未実装 |
-| `reference/week-09-complete` | 教員が完成状態を確認する | カテゴリー別一覧と最大60秒ごとの再検証まで実装済み |
+| `checkpoint/week-07-start` | 第5回・第6回の作業を修復できない | サンプル記事、プロフィール、主要ページの静的な雛形 |
+| `checkpoint/week-10-start` | 第9回の記事一覧接続を修復できない | `blogs` APIから一覧を取得できる。詳細取得は未完成 |
+| `checkpoint/week-11-start` | 第10回の記事詳細を修復できない | 一覧、詳細、リッチエディタ本文、Not Foundまで動作する |
+| `reference/optional-category-complete` | 教員が発展機能の完成状態を説明する | カテゴリー別一覧と最大60秒ごとの再検証まで実装済み |
+
+第8回はmicroCMS管理画面の準備、第9回は一覧接続を行うため、コードの復帰地点としては第7回開始時と第10回開始時を用意しています。
 
 ## 復帰時の原則
 
 - 現在の作業を削除せず、新しいブランチへ切り替えます。
 - `.env.local`はブランチへ含まれません。自分の環境で再設定します。
 - チェックポイントのコードを使った場合でも、プロフィール、記事、画像、公開URLは自分の内容へ変更します。
-- `reference`ブランチは提出物ではありません。完成状態の確認と教員の説明に使用します。
+- `reference`ブランチは提出物や復帰地点ではありません。発展機能の説明にだけ使用します。
 
 ## 元の雛形をリモートとして追加する
 
@@ -35,18 +37,26 @@ git remote -v
 
 ## チェックポイントから新しい復帰ブランチを作る
 
-第8回開始時の状態から復帰する例です。
+第10回開始時の状態から復帰する例です。
 
 ```bash
-git switch -c recovery-week-08 curriculum/checkpoint/week-08-start
+git switch -c recovery-week-10 curriculum/checkpoint/week-10-start
 npm install
 npm run check
 ```
 
-第9回開始時の状態から復帰する場合は、ブランチ名を変更します。
+第11回開始時の状態から復帰する場合は、次のように変更します。
 
 ```bash
-git switch -c recovery-week-09 curriculum/checkpoint/week-09-start
+git switch -c recovery-week-11 curriculum/checkpoint/week-11-start
+npm install
+npm run check
+```
+
+第7回開始時の静的な状態へ戻る場合は、次のブランチを使用します。
+
+```bash
+git switch -c recovery-week-07 curriculum/checkpoint/week-07-start
 npm install
 npm run check
 ```
@@ -55,7 +65,7 @@ npm run check
 
 ## microCMSを使用するチェックポイント
 
-第8回以降のチェックポイントでは、次の環境変数を`.env.local`へ設定します。
+第10回以降のチェックポイントでは、次の環境変数を`.env.local`へ設定します。
 
 ```text
 MICROCMS_SERVICE_DOMAIN=自分のサービスドメイン
@@ -63,12 +73,13 @@ MICROCMS_API_KEY=自分のAPIキー
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
 ```
 
-APIキーをGitHubへ追加してはいけません。環境変数を変更した後は、開発サーバーを再起動してください。
+APIキーをGitHubへ追加してはいけません。公開サイト用のAPIキーは`GET`権限だけにし、環境変数を変更した後は開発サーバーを再起動してください。
 
 ## 確認順序
 
 1. `npm install`が完了する。
 2. `npm run dev`でTOPページが表示される。
-3. `npm run check`が成功する。
-4. その回のNotionページにある「最低限の完了条件」を確認する。
-5. 自分用の変更をコミットし、GitHubへプッシュする。
+3. `.env.local`を使う場合は、秘密情報がGitの追跡対象に入っていないことを確認する。
+4. `npm run check`が成功する。
+5. その回のNotionページにある「最低限の完了条件」を確認する。
+6. 自分用の変更をコミットし、GitHubへプッシュする。
