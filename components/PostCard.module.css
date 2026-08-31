@@ -19,16 +19,7 @@
   font-size: 0.8rem;
 }
 
-.categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.categories li {
+.category {
   border-radius: 999px;
   background: var(--color-accent-soft);
   padding: 0.2rem 0.55rem;
