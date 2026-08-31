@@ -47,7 +47,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             ブログ一覧へ戻る
           </Link>
           {post.category ? (
-            <p className={styles.category}>{post.category.name}</p>
+            <Link
+              className={styles.categoryLink}
+              href={`/blog/category/${post.category.id}`}
+            >
+              {post.category.name}
+            </Link>
           ) : null}
           <h1>{post.title}</h1>
           <p className={styles.description}>{post.description}</p>
