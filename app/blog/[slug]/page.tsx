@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
+import { PostBody } from "@/components/PostBody";
 import { formatDate } from "@/lib/format-date";
 import { getPostBySlug } from "@/lib/posts";
 import styles from "./page.module.css";
@@ -45,11 +46,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <Link className={styles.backLink} href="/blog">
             ブログ一覧へ戻る
           </Link>
-          <ul className={styles.categories} aria-label="カテゴリー">
-            {post.categories.map((category) => (
-              <li key={category}>{category}</li>
-            ))}
-          </ul>
+          {post.category ? (
+            <Link
+              className={styles.categoryLink}
+              href={`/blog/category/${post.category.id}`}
+            >
+              {post.category.name}
+            </Link>
+          ) : null}
           <h1>{post.title}</h1>
           <p className={styles.description}>{post.description}</p>
           <time dateTime={post.publishedAt}>
@@ -57,11 +61,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </time>
         </header>
 
-        <div className={styles.content}>
-          {post.content.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
+        <PostBody html={post.content} />
       </article>
     </Container>
   );

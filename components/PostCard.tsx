@@ -12,11 +12,14 @@ export function PostCard({ post }: PostCardProps) {
     <article className={styles.card}>
       <div className={styles.meta}>
         <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
-        <ul className={styles.categories} aria-label="カテゴリー">
-          {post.categories.map((category) => (
-            <li key={category}>{category}</li>
-          ))}
-        </ul>
+        {post.category ? (
+          <Link
+            className={styles.categoryLink}
+            href={`/blog/category/${post.category.id}`}
+          >
+            {post.category.name}
+          </Link>
+        ) : null}
       </div>
       <h2 className={styles.title}>
         <Link href={`/blog/${post.slug}`}>{post.title}</Link>
