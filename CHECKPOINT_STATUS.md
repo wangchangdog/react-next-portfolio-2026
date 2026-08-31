@@ -1,23 +1,24 @@
-# checkpoint/week-10-start
+# checkpoint/week-11-start
 
-このブランチは、第10回授業を開始するための途中復帰用チェックポイントです。
+このブランチは、第11回授業を開始するための途中復帰用チェックポイントです。
 
 ## 完了していること
 
-- microCMSの`blogs` APIと公開記事が用意されている前提で、記事一覧を取得できる
-- `.env.local`に値がない場合はサンプル記事を表示し、CIとローカル起動を維持する
-- microCMSのリッチエディタ本文を扱うため、`Post.content`をHTML文字列として定義している
-- 本文表示用の`PostBody`コンポーネントを用意している
-- Next.js 16の非同期`params`を使う詳細ページの骨格がある
-
-## 第10回で学生が行うこと
-
-- `lib/posts.ts`の`getPostBySlug()`を、microCMSから1件取得する処理へ置き換える
-- 一覧から記事詳細へ移動し、`PostBody`を使って本文を表示する
+- microCMSの`blogs` APIから記事一覧を取得する
+- microCMSのコンテンツIDをURL上の`slug`として使用する
+- 記事詳細を1件取得し、`PostBody`でリッチエディタ本文を表示する
+- Next.js 16の非同期`params`へ対応している
 - 存在しない記事をNot Foundとして扱う
-- `npm run check`で一覧・詳細・型・ビルドを確認する
+- 環境変数がない場合はサンプル記事へフォールバックする
 
-Vercelへの初回公開は第11回で行います。
+## 第11回で学生が行うこと
+
+- GitHubへ最新の変更をプッシュする
+- Vercelへ自分のリポジトリをインポートする
+- `MICROCMS_SERVICE_DOMAIN`と`MICROCMS_API_KEY`をVercelへ設定する
+- 公開URLからTOP、プロフィール、ブログ一覧、ブログ詳細、Not Foundを確認する
+- READMEへ公開URLと実装状況を記録する
+- 冬休み前に未完了項目と改善計画を整理する
 
 ## 必要なmicroCMS API
 
@@ -27,4 +28,4 @@ Vercelへの初回公開は第11回で行います。
 - `description`：テキストエリア
 - `content`：リッチエディタ
 
-カテゴリーは必須要件ではありません。第13回以降の発展課題で追加できます。
+カテゴリー機能は必須要件ではありません。第13回以降の発展課題で追加できます。
