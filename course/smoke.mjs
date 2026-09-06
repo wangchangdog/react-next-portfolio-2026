@@ -30,7 +30,12 @@ try {
   }
   for (const route of ["/blog/not-existing-test-id", "/works/not-existing-test-id"]) {
     const response = await fetch(base + route, { signal: AbortSignal.timeout(10000) });
-    assert.equal(response.status, 404, route);
+    const html = await response.text();
+    // App Routerではstream開始後のnotFoundは200になり得ます。
+    // https://nextjs.org/docs/app/api-reference/file-conventions/not-found
+    assert.ok([200, 404].includes(response.status), `${route}: ${response.status}`);
+    assert.match(html, /ページが見つかりません/, route);
+    assert.match(html, /<meta\b[^>]*name="robots"[^>]*content="[^"]*noindex/, route);
   }
   console.log(`HTTP route smoke passed: ${stage}. Sample data only; not a browser/CMS end-to-end test.`);
 } finally {
