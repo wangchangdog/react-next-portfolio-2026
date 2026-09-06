@@ -9,13 +9,13 @@ function load(file, imports = {}, environment = {}) {
   const text = readFileSync(file, 'utf8');
   const compiled = ts.transpileModule(text, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, esModuleInterop: true }, reportDiagnostics: true });
   assert.equal(compiled.diagnostics?.filter(d => d.category === ts.DiagnosticCategory.Error).length, 0, file);
-  const module = { exports: {} };
+  const sandboxModule = { exports: {} };
   vm.runInNewContext(compiled.outputText, {
-    exports: module.exports, module, Error, encodeURIComponent,
+    exports: sandboxModule.exports, module: sandboxModule, Error, encodeURIComponent,
     process: { env: environment },
     require: name => name === 'server-only' ? {} : Object.hasOwn(imports, name) ? imports[name] : require(name),
   }, { filename: file });
-  return module.exports;
+  return sandboxModule.exports;
 }
 async function test(name, run) { await run(); passed++; console.log(`PASS ${name}`); }
 const errors = load('lib/cms-errors.ts');
