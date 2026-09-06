@@ -5,6 +5,9 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { profile } from "@/data/profile";
 import "./globals.css";
 
+// 標準教材は要求時に表示します。SDK内部のcatchに静的生成の制御を渡しません。
+export const dynamic = "force-dynamic";
+
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
