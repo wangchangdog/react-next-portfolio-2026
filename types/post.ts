@@ -5,7 +5,8 @@ export type Post = {
   slug: string;
   title: string;
   description: string;
-  content: string[];
+  /** サンプルとmicroCMSのどちらでもHTML文字列を使います。 */
+  content: string;
   publishedAt: string;
   thumbnail?: Thumbnail;
 };

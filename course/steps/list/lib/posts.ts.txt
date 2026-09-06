@@ -1,0 +1,44 @@
+import type { MicroCMSListContent } from "microcms-js-sdk";
+import { samplePosts } from "@/data/sample-posts";
+import { getMicroCMSClient } from "@/lib/microcms";
+import type { Post } from "@/types/post";
+import type { Thumbnail } from "@/types/media";
+
+type CMSBlog = {
+  title: string;
+  description?: string;
+  content?: string;
+  thumbnail?: Thumbnail;
+} & MicroCMSListContent;
+
+function toPost(blog: CMSBlog): Post {
+  return {
+    id: blog.id,
+    slug: blog.id,
+    title: blog.title,
+    description: blog.description ?? "",
+    content: blog.content ?? "",
+    publishedAt: blog.publishedAt ?? blog.createdAt,
+    thumbnail: blog.thumbnail,
+  };
+}
+
+export async function getPosts(): Promise<Post[]> {
+  const client = getMicroCMSClient();
+  if (!client) {
+    return [...samplePosts].sort((a, b) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+  }
+  const data = await client.getList<CMSBlog>({
+    endpoint: "blogs",
+    queries: { limit: 10, orders: "-publishedAt" },
+    customRequestInit: { cache: "no-store" },
+  });
+  return data.contents.map(toPost);
+}
+
+// 第10回の詳細取得タスクで置き換えます。
+export async function getPostBySlug(slug: string): Promise<Post | undefined> {
+  if (!getMicroCMSClient()) return samplePosts.find((post) => post.slug === slug);
+  return undefined;
+}
