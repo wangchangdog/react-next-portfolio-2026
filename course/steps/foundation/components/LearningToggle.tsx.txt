@@ -1,0 +1,23 @@
+"use client";
+
+import { useId, useState } from "react";
+
+export function LearningToggle() {
+  const [open, setOpen] = useState(false);
+  const panelId = useId();
+  return (
+    <section>
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls={panelId}
+        onClick={() => setOpen((current) => !current)}
+      >
+        {open ? "説明を閉じる" : "説明を開く"}
+      </button>
+      <p id={panelId} hidden={!open}>
+        クリックで状態を変える部品だけをClient Componentにしています。
+      </p>
+    </section>
+  );
+}

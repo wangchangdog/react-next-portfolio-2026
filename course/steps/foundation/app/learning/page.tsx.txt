@@ -1,0 +1,18 @@
+import Link from "next/link";
+import { Container } from "@/components/Container";
+import { LearningNote } from "@/components/LearningNote";
+import { LearningToggle } from "@/components/LearningToggle";
+
+export default function LearningPage() {
+  return (
+    <Container>
+      <h1>学習メモ</h1>
+      <p>Next.jsではフォルダとpage.tsxを使ってページを作ります。</p>
+      <LearningNote title="配列と一覧表示">
+        <p>mapで一覧を作り、sliceで表示する範囲を変えました。</p>
+      </LearningNote>
+      <LearningToggle />
+      <Link href="/profile">自己紹介へ戻る</Link>
+    </Container>
+  );
+}
