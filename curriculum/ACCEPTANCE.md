@@ -4,10 +4,12 @@
 
 ## 自動検証済みの範囲
 
-コードのコミット `0cf03dab82228a95e436b68c5c1cea08c8dba4a4` で次を確認しました。
+記録更新前のPR head `5895415af613ff4908375194eec61021d1950d86` を対象に、次の両ワークフローの成功を確認しました。
 
-- CI: https://github.com/wangchangdog/react-next-portfolio-2026/actions/runs/34035042314
-- Curriculum walkthrough: https://github.com/wangchangdog/react-next-portfolio-2026/actions/runs/34035042283
+- CI: https://github.com/wangchangdog/react-next-portfolio-2026/actions/runs/34035769832
+- Curriculum walkthrough: https://github.com/wangchangdog/react-next-portfolio-2026/actions/runs/34035769783
+
+この記録は上記コミットと実行に対応する検証スナップショットです。記録更新で生じる後続コミットの検証結果はPR本文とChecksで確認し、上記の実行結果を後続コミットの結果として扱いません。
 
 20件のロジック・サニタイズ検証、およびstarter、blog-list、both-lists、blog-detail、completeの5段階でLint、型検査、本番ビルドが成功しています。completeは本番サーバーを起動し、モックCMSのブログ詳細・作品詳細、本文のstrong要素、存在しない記事のnoindexをHTTP経由で確認しています。
 
@@ -32,6 +34,7 @@ Notionは更新後に取得し直し、T05の起動・情報編集・URL確認�
 
 - [x] 主要なNotion実装タスクが同じ教材版とPR #21を参照していることを読み戻して確認した。
 - [x] T05〜T10の保存されたコードブロックと前後の指示を確認した。
+- [ ] ブラウザで教材手順を通して操作し、表示・キーボード操作を確認した。
 - [ ] 学生のGitHubアカウントで配布元を取得できることを確認した。
 - [ ] 実microCMSの画像を含む一覧と詳細を確認した。
 - [ ] 実Vercelの公開とCMS更新の反映を確認した。
