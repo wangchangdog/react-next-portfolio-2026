@@ -5,6 +5,7 @@ export type Work = {
   slug: string;
   title: string;
   description: string;
-  content: string[];
+  // 初期データは段落配列、CMS移行後はHTML文字列。表示はRichTextBodyが担当します。
+  content: string | string[];
   thumbnail?: Thumbnail;
 };
