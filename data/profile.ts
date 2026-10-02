@@ -6,9 +6,9 @@ export const profile = {
   location: "京都",
   skills: ["HTML", "CSS", "JavaScript", "TypeScript", "React"],
   learningGoals: [
-    "Webサイトの目的に合った情報設計を行う",
+    "Webサイトの目的に合わせて情報を設計する",
     "ReactとNext.jsの役割の違いを説明する",
-    "自分で制作したWebサイトを公開し、継続して改善する",
+    "自分で制作したWebサイトを公開し、改善を続ける",
   ],
   links: [
     {

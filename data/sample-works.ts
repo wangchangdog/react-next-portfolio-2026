@@ -10,7 +10,7 @@ export const sampleWorks: Work[] = [
     content: [
       "PokeAPIから取得したデータを使い、ポケモンの一覧と詳細を表示するWebアプリを制作しました。",
       "画面を役割ごとのコンポーネントに分け、Propsを使って必要なデータを受け渡しています。",
-      "制作中に発生した問題と解決方法を記録し、第三者が実装内容を確認できる状態を目指しました。",
+      "制作中に起きた問題と解決方法を記録し、ほかの人が実装内容を確認できるようにすることを目指しました。",
     ],
     thumbnail: {
       url: "/images/sample-work-01.svg",
@@ -23,11 +23,11 @@ export const sampleWorks: Work[] = [
     slug: "about-me-site",
     title: "自己紹介サイト",
     description:
-      "HTML、CSS、JavaScriptを使って制作した、自分の学習内容を紹介するWebサイトです。",
+      "HTML、CSS、JavaScriptで制作した、学んだことを紹介するWebサイトです。",
     content: [
       "自分のプロフィール、学習中の技術、制作物を複数のページに分けて掲載しました。",
-      "スマートフォンとPCの両方で読みやすくなるように、画面幅に応じてレイアウトを調整しています。",
-      "GitHub Pagesへ公開し、第三者がURLから閲覧できる状態にしました。",
+      "スマートフォンでもPCでも読みやすいように、画面幅に応じてレイアウトを調整しています。",
+      "GitHub Pagesで公開し、ほかの人がURLから見られるようにしました。",
     ],
     thumbnail: {
       url: "/images/sample-work-02.svg",

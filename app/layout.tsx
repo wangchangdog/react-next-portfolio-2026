@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: `%s | ${profile.name}`,
   },
   description:
-    "Web基礎の授業で制作する、プロフィール、作品、ブログを掲載したポートフォリオサイトです。",
+    "Web基礎の授業で制作するポートフォリオサイトです。プロフィール、作品、ブログを掲載しています。",
 };
 
 type RootLayoutProps = {

@@ -17,7 +17,7 @@ export default async function BlogPage() {
       <header className={styles.header}>
         <h1>ブログ</h1>
         <p>
-          授業で学んだ内容、制作中に発生した問題、試したことを記録します。
+          授業で学んだ内容、制作中に起きた問題、試したことを記録します。
         </p>
       </header>
 

@@ -7,8 +7,8 @@ export default function NotFoundPage() {
     <Container className={styles.page}>
       <p className={styles.code}>404</p>
       <h1>ページが見つかりません</h1>
-      <p>URLが正しいか確認するか、TOPページから目的のページへ移動してください。</p>
-      <Link href="/">TOPページへ戻る</Link>
+      <p>URLを確かめるか、ホームから目的のページへ移動してください。</p>
+      <Link href="/">ホームへ戻る</Link>
     </Container>
   );
 }
