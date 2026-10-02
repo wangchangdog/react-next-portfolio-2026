@@ -33,9 +33,19 @@ export function PostCard({
         </Link>
       ) : null}
       <div className={styles.body}>
-        <time className={styles.date} dateTime={post.publishedAt}>
-          {formatDate(post.publishedAt)}
-        </time>
+        <div className={styles.meta}>
+          <time dateTime={post.publishedAt}>
+            {formatDate(post.publishedAt)}
+          </time>
+          {post.category ? (
+            <Link
+              className={styles.categoryLink}
+              href={`/blog/category/${post.category.id}`}
+            >
+              {post.category.name}
+            </Link>
+          ) : null}
+        </div>
         <Heading className={styles.title}>
           <Link href={`/blog/${post.slug}`}>{post.title}</Link>
         </Heading>

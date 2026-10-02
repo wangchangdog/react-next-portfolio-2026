@@ -47,9 +47,19 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <Link className={styles.backLink} href="/blog">
             ブログ一覧へ戻る
           </Link>
-          <time dateTime={post.publishedAt}>
-            {formatDate(post.publishedAt)}
-          </time>
+          <div className={styles.meta}>
+            <time dateTime={post.publishedAt}>
+              {formatDate(post.publishedAt)}
+            </time>
+            {post.category ? (
+              <Link
+                className={styles.categoryLink}
+                href={`/blog/category/${post.category.id}`}
+              >
+                {post.category.name}
+              </Link>
+            ) : null}
+          </div>
           <h1>{post.title}</h1>
           <p className={styles.description}>{post.description}</p>
           {post.thumbnail ? (
