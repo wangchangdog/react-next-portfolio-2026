@@ -18,8 +18,8 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
   return (
     <div className={styles.page}>
       <p className={styles.label}>ERROR</p>
-      <h1>ページの表示中に問題が発生しました</h1>
-      <p>時間を置いて再度試すか、直前に行った操作を確認してください。</p>
+      <h1>ページの表示中に問題が起きました</h1>
+      <p>しばらく待ってからもう一度試すか、直前の操作を確認してください。</p>
       <button type="button" onClick={reset}>
         もう一度試す
       </button>
