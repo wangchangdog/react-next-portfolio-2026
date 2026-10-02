@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
+import { RichTextBody } from "@/components/RichTextBody";
 import { getWorkBySlug } from "@/lib/works";
 import styles from "./page.module.css";
 
@@ -59,11 +60,7 @@ export default async function WorkPage({ params }: WorkPageProps) {
           ) : null}
         </header>
 
-        <div className={styles.content}>
-          {work.content.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
+        <RichTextBody html={work.content} />
       </article>
     </Container>
   );

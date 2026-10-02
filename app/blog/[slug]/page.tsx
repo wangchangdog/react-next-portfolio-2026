@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/Container";
+import { RichTextBody } from "@/components/RichTextBody";
 import { formatDate } from "@/lib/format-date";
 import { getPostBySlug } from "@/lib/posts";
 import styles from "./page.module.css";
@@ -63,11 +64,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           ) : null}
         </header>
 
-        <div className={styles.content}>
-          {post.content.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
+        <RichTextBody html={post.content} />
       </article>
     </Container>
   );
