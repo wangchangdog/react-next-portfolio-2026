@@ -42,10 +42,18 @@ export async function getWorks(): Promise<Work[]> {
 export async function getWorkBySlug(slug: string): Promise<Work | undefined> {
   const client = getMicroCMSClient();
 
-  if (client) {
-    // 第10回で、microCMSから作品を1件取得する処理へ置き換えます。
-    return undefined;
+  if (!client) {
+    return sampleWorks.find((work) => work.slug === slug);
   }
 
-  return sampleWorks.find((work) => work.slug === slug);
+  try {
+    const work = await client.getListDetail<MicroCMSWork>({
+      endpoint: "works",
+      contentId: slug,
+    });
+
+    return toWork(work);
+  } catch {
+    return undefined;
+  }
 }
