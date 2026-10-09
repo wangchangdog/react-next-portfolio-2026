@@ -6,7 +6,7 @@
 
 ## 教材版
 
-本文照合版 `textbook-walkthrough-2026-09-06` を使用します。対応ブランチは `curriculum/textbook-walkthrough` です。PRのマージ前はこのブランチで確認してください。旧チェックポイントを混ぜず、`curriculum/edition.json`を確認します。
+本文照合版 `textbook-walkthrough-2026-09-06` を使用します。使用するブランチは `curriculum/textbook-walkthrough` です。Notionの第5回からこのブランチを取得します。旧チェックポイントを混ぜず、`curriculum/edition.json`を確認します。
 
 出発点にはTOP、プロフィール、ブログ一覧・詳細、作品一覧・詳細、サンプル画像、共通部品があります。CMSの一覧・詳細の取得はまだサンプルを返すため、NotionのT09とT10で実装します。安全な本文表示と環境変数の確認は講師提供部分として用意しています。
 
