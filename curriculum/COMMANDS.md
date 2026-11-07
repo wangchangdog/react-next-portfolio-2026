@@ -79,14 +79,17 @@ GitHubの作成画面で、自分のアカウントに `react-next-portfolio` �
 
 この手順は、ポートフォリオを初めて作るときに1回だけ実行します。同名のフォルダがある場合は中身を確認してください。自分の制作途中のファイルがあれば、そのフォルダから[作業を再開](#resume)します。
 
+配布元のコミット履歴を引き継がないよう、clone直後にGitを初期化し直します。下の `rm -rf .git` は、今回cloneした直後の `react-next-portfolio` 内でだけ実行します。自分の変更やコミットがあるフォルダでは実行せず、[作業を再開](#resume)してください。
+
 ```bash
 git clone --single-branch --branch master https://github.com/wangchangdog/react-next-portfolio-2026.git react-next-portfolio
 cd react-next-portfolio
-git remote rename origin course
-git switch -c main
+rm -rf .git
+git init -b main
+git remote add course https://github.com/wangchangdog/react-next-portfolio-2026.git
 ```
 
-`master` は配布元のブランチ、ここで作る `main` は自分の制作ブランチです。配布元を `course` という名前に変更して、自分の保存先と区別します。
+`master` は配布元のブランチ、ここで作る `main` は自分の制作ブランチです。配布元を `course` として登録し、自分の保存先と区別します。
 
 `YOUR_GITHUB_NAME` を自分のGitHubユーザー名に置き換え、自分の保存先を追加します。
 
@@ -137,15 +140,30 @@ npm install
 npm run dev
 ```
 
-配布元には `package-lock.json` がないため、初回は `npm install` を使います。このコマンドで生成された `package-lock.json` は、T05の変更と一緒に自分のGitHubへ保存します。
+配布元には `package-lock.json` がないため、初回は `npm install` を使います。このコマンドで生成された `package-lock.json` は、次の最初のコミットで雛形と一緒に保存します。
 
 起動したら、ターミナルに表示されたURLをブラウザで開きます。通常は <http://localhost:3000> ですが、別の番号なら表示されたURLを使います。T05とT06は環境変数なしで動きます。
+
+### 6. 雛形を最初のコミットに保存する
+
+プロフィールを変更する前に、雛形全体を保存します。新しいターミナルを開き、`pwd` と `ls package.json` で制作フォルダを確認してから実行します。起動中のターミナルを使う場合は、先にCtrl+Cで止めます。`.env.local` と `node_modules` は、雛形の `.gitignore` で除外されます。
+
+```bash
+git add .
+git diff --cached
+git status
+git commit -m "雛形を追加"
+git log --oneline
+```
+
+履歴に「雛形を追加」の1件だけが表示されることを確認します。
 
 ### 初回準備の完了チェック
 
 - [ ] `origin`は自分、`course`は配布元のURLで、現在のブランチが`main`になっている。
 - [ ] `--local --get`で確認したコミットの氏名・メールアドレスが自分のものになっている。
 - [ ] 開発サーバーのURLで、TOP・プロフィール・作品・ブログを開ける。
+- [ ] プロフィールを変更する前に雛形を保存し、`git log --oneline` に「雛形を追加」の1件だけが表示される。
 
 確認できたら[第5回のNotion](https://app.notion.com/p/33f24b6a67ce819281c0e4c6f83c04e9)のT05-2へ進みます。T05全体の[完了チェック](TEXTBOOK.md#t05の完了チェック)は、プロフィールの変更とGitHubへの保存まで終えてから使います。チェック状況は自分のメモに記録します。
 
