@@ -39,7 +39,7 @@ p.101とp.286の訂正は、出版社が公開する正誤表を別に確認し�
 
 | タスクID | 参考にする節（公式目次の表記） | ページ | 教材で使う部分 | 実装時の差分 |
 | --- | --- | --- | --- | --- |
-| T06-1 | 3-1-4 モダンなCSS記法（CSSmodules）で装飾をしよう | p.40〜43 | `app/page.tsx`の`styles.introduction`と`app/page.module.css`の対応を探し、行間を変えて確認する。 | 既存のCSSを残す。全体のスタイルとCSS Modulesの適用先を区別する。 |
+| T06-1 | 3-1-4 モダンなCSS記法（CSSmodules）で装飾をしよう | p.40〜43 | `app/page.tsx`の`styles.introduction`と`app/page.module.css`の対応を探し、既存の`.introduction`へ`line-height: 2.2;`を追加してTOPの行間を確認する。 | 初期状態は`body`の`line-height: 1.8`を継承している。既存のCSSを残し、全体のスタイルとCSS Modulesの適用先を区別する。 |
 | T06-2：一覧 | 3-3-1 データを表示させよう | p.50〜55 | `data/sample-posts.ts`のタイトルと、TOPの`slice`による表示件数をそれぞれ変更し、`map`の働きを確認する。 | 教科書のニュース配列を追加しない。TOPは抜粋、ブログ一覧は一覧全体という違いを確認する。 |
 | T06-2：型 | 3-3-2 コンポーネントを作ろう | p.68〜71 | 共通の型を別ファイルに置く理由を読み、`types/post.ts`を確認する。 | 雛形の`Post`型を使う。教科書の`News`型を重複して追加しない。 |
 | T06-3：Props | 3-3-2 コンポーネントを作ろう | p.57〜62 | `PostCard`の`post`、`Container`の`children`、呼び出し側の対応を確認する。 | 教科書の`NewsList`は配列全体、教材の`PostCard`は記事1件を受け取る。教材の`map`はページ側にある。 |
