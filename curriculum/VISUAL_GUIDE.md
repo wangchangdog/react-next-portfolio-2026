@@ -2,7 +2,7 @@
 
 Notionの各作業の途中で、設定画面の位置と、確認する結果を見比べるための補足です。コマンドは[COMMANDS.md](COMMANDS.md)、読む教科書の節とページは[TEXTBOOK.md](TEXTBOOK.md)で確認できます。
 
-このページの説明図は現行教材のコードに基づいて作成しています。管理画面の画像は公式資料に掲載された画面例です。各画像の直下に、教材で入力する値と出典を記載しています。画像が小さい場合は、画像を開いて拡大してください。
+このページの説明図は現行教材のコードに基づいて作成しています。T05とT06には、教材を実際に動かして撮影した画面も掲載しています。T06の比較図は、実画面の確認する部分を抜き出して並べたものです。管理画面の画像は公式資料の画面例です。画像ごとに確認する箇所と出典を記載しています。画像が小さい場合は、画像を開いて拡大してください。
 
 ## T05：どのフォルダで、何を実行するか
 
@@ -27,6 +27,10 @@ Notionの各作業の途中で、設定画面の位置と、確認する結果�
 
 ### 文章を書き換えたときの確認
 
+![OpenVSCode Serverでdata/profile.tsを開き、下のターミナルでpackage.jsonの存在を確認した実画面](images/t05-editor-profile-real.jpg)
+
+左のファイル一覧で`data/profile.ts`を開くと、中央に名前や自己紹介のコードが表示されます。下の「TERMINAL」では、`ls package.json`の結果に`package.json`が表示されていることを確認できます。OpenVSCode Serverの撮影用フォルダは`portfolio-lesson6-src`ですが、授業では自分の`react-next-portfolio`を開き、`main`で作業します。
+
 | 編集する場所 | ブラウザで開く場所 | 確認する変化 |
 | --- | --- | --- |
 | `data/profile.ts`の`name` | TOPと`/profile` | 両方に自分の名前が表示される |
@@ -35,21 +39,61 @@ Notionの各作業の途中で、設定画面の位置と、確認する結果�
 
 最初は引用符内の文章を一つ変えて保存し、画面を確認します。ターミナルが示したポート番号が3000以外なら、そのURLを使います。
 
-## T06：データと表示件数を見比べる
+## T06：データと見た目の変化を確認する
+
+### T06-1：自己紹介の行間を変える
+
+`app/page.tsx`の自己紹介には`className={styles.introduction}`が付いており、`app/page.module.css`の`.introduction`が対応します。初期状態ではこのブロックに`line-height`がなく、`app/globals.css`の`body`にある`line-height: 1.8`を継承しています。
+
+既存の`.introduction`のブロック内へ`line-height: 2.2;`を1行追加して保存します。TOPの自己紹介文の行間が広がることを、同じ画面幅で確認してください。プロフィールページは別のCSS Modulesを使うため、この変更の対象はTOPの自己紹介です。
+
+![OpenVSCode Serverでapp/page.module.cssを開き、.introductionへline-height: 2.2を追加した実画面](images/t06-editor-css-real.jpg)
+
+画像の24行目が追加した1行です。左の`app/page.module.css`と、中央の`.introduction`を確認します。ここでも撮影用フォルダ名は`portfolio-lesson6-src`です。
+
+![実画面から自己紹介部分を抜き出した比較図。行間1.8の変更前と、2.2を指定した変更後を比べる](images/t06-css-comparison.jpg)
+
+元の実画面：[変更前のTOP](images/t06-css-before.jpg)／[変更後のTOP](images/t06-css-after.jpg)。
+
+### T06-2・3：データ、表示件数、部品の関係を見る
 
 ![3件のサンプルを使い、TOPだけ1件を選び、ブログ一覧は3件を表示する関係](images/06-data-and-display.png)
 
 この図は、サンプル記事が3件あり、TOPの`slice(0, 3)`を一時的に`slice(0, 1)`へ変更した状態です。TOPの「最近の記事」は1件、`/blog`は3件になります。CMS接続後は、CMSにある公開記事の件数で同じ関係を確認します。
 
+次の比較図では、TOPの「最近の記事」とブログ一覧の件数を見比べます。自分のサイトでも、TOPは1件、ブログ一覧は3件であることを確認してください。各ページの`posts.map`が、表示する記事を1件ずつ`PostCard`の`post`へ渡しています。
+
+![実画面から記事一覧を抜き出した比較図。TOPは1件、ブログ一覧は3件を表示している](images/t06-posts-comparison.jpg)
+
+元の実画面：[TOPの最近の記事](images/t06-top-one-post.jpg)／[ブログ一覧](images/t06-blog-three-posts.jpg)。
+
 | 操作 | 期待する結果 |
 | --- | --- |
-| サンプル1件の`title`を変更する | TOPとブログ一覧の両方で、その記事のタイトルが変わる |
+| TOPに表示しているサンプル記事の`title`を変更する | TOPとブログ一覧の両方で、その記事のタイトルが変わる |
 | TOPだけを`slice(0, 1)`にする | TOPの記事数だけが1件になる |
-| `thumbnail.url`と元画像の寸法を変更する | 一覧とその記事の詳細で画像が変わる |
-| `LearningNote`の「学習メモを開く」を押す | メモが表示され、ボタンの表示が「学習メモを閉じる」になる |
-| 同じボタンを再び押す | メモが閉じ、ボタンの表示が元に戻る |
+
+### T06-4：画像の変更を確認する
+
+`thumbnail.url`と元画像の幅・高さを変更したら、一覧とその記事の詳細を開き、両方で画像が変わることを確認します。
+
+### T06-5：学習メモの開閉を確認する
 
 `LearningNote`は、コンポーネントのファイルを作る、プロフィールへimportする、`<LearningNote />`を配置する、という3か所の変更で表示できます。閉じた状態と開いた状態の両方を確認します。
+
+プロフィールページの下部でボタンを押します。`open`が`false`のときは本文が隠れ、`true`になると本文と「学習メモを閉じる」の表示を確認できます。もう一度押して、閉じた状態へ戻ることも確かめます。
+
+![実画面から学習メモを抜き出した比較図。閉じた状態と、ボタンを押して本文を開いた状態を比べる](images/t06-state-comparison.jpg)
+
+元の実画面：[閉じた状態](images/t06-learning-note-closed.jpg)／[開いた状態](images/t06-learning-note-open.jpg)。
+
+<details>
+<summary>実画面の撮影条件</summary>
+
+T05とT06の実画面は、2026年11月12日に[教材のコミット1760268](https://github.com/wangchangdog/react-next-portfolio-2026/commit/1760268a822412a51aae7547b58cc5b7ad4ca5db)から作った作業コピーを使って撮影しました。アプリはサンプルデータで実行し、比較のため、T06-1の`line-height: 2.2`、T06-2のTOPの`slice(0, 1)`、T06-5の`LearningNote`を順に追加しています。`LearningNote`はNotion掲載のコードを使い、独自のCSSは追加していません。
+
+元の実画面8枚は撮影したファイルのまま保存しています。比較図3枚は、その画像の一部をHTMLとCSSで抜き出して並べ、ブラウザで撮影したものです。元画面の内容は書き換えていません。[比較図の再現方法](comparison-pages/README.md)も参照できます。
+
+</details>
 
 ## T08：microCMSの管理画面で設定する
 
